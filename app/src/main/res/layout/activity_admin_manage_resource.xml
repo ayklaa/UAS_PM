@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.f52123078.aplikasibelajarmandiri.viewModel.AdminManageResourceActivity">
+
+    <!-- 1. App Bar (Toolbar) dengan tombol back -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_admin_manage"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Kelola Resources"
+            app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel" /> <!-- Icon Back -->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- 2. Konten (Bisa di-scroll) -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 1. FORM CARD -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_form_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tambah Resource Baru"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Form Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_title"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Judul Resource">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapWords"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_url"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="URL (https://...)"
+                        android:layout_marginTop="8dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_url"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Dropdown Prodi -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_prodi"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Pilih Prodi"
+                        android:layout_marginTop="8dp">
+                        <AutoCompleteTextView
+                            android:id="@+id/act_prodi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Dropdown Mata Kuliah (dependent) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_mk"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Pilih Mata Kuliah"
+                        android:layout_marginTop="8dp">
+                        <AutoCompleteTextView
+                            android:id="@+id/act_mk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:enabled="false" /> <!-- Disable dulu -->
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Dropdown Tipe Resource -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_type"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Tipe Resource"
+                        android:layout_marginTop="8dp">
+                        <AutoCompleteTextView
+                            android:id="@+id/act_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_desc"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Deskripsi (Opsional)"
+                        android:layout_marginTop="8dp">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapSentences|textMultiLine"
+                            android:minLines="3"
+                            android:gravity="top"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Tombol Aksi -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_save"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Simpan"
+                            android:paddingVertical="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_cancel"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Batal"
+                            android:paddingVertical="12dp"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. DAFTAR RESOURCE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar Resource Saat Ini"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_empty_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Belum ada resource."
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="@android:color/darker_gray"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_admin_resources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_resource_admin"
+                tools:itemCount="3" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
