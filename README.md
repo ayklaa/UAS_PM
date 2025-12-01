@@ -25,8 +25,8 @@
 | :---: | :--- | :--- | :--- |
 | 1. | **Dinar Fauziah** | `F52123078` | Firebase Specialist |
 | 2. | **Uswatun Hasanah H. N.** | `F52123093` | Project Manager |
-| 3. | **Muh. Yusuf Mansur** | `F52123074` | UI/UX & Frontend |
-| 4. | **Muh. Avif Arya Manggona** | `F52123070` | Programmer MVC & Testing |
+| 3. | **Muh. Yusuf Mansur** | `F52123095` | UI/UX & Frontend |
+| 4. | **Muh. Avif Arya Manggona** | `F52123073` | Programmer MVC & Testing |
 
 > *Kelompok: Pemrograman Mobile - Semester 5*
 
